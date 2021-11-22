@@ -1,0 +1,43 @@
+div#container {
+	padding: 40px;
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+    align-content: center;
+}
+input#Usuario, input#Contraseña{
+	border:0;
+	background: none;
+	display: flex;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid rgb(131, 131, 134);
+	padding: 14px 10px;
+	width: 300px;
+	outline: none;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+input#Usuario:focus, input#Contraseña:focus{
+	width: 380px;
+	border-color: rgb(43, 43, 43);
+}
+input#Login{
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid rgb(43, 43, 43);
+	padding: 14px 40px;
+	outline: none;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+input#Login:hover{
+	background: rgb(94, 94, 94);
+	color: white;
+}

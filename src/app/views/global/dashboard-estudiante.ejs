@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a04ef755a4.js" crossorigin="anonymous"></script>
+
+    <!-- Registro -->
+    <link rel="stylesheet" href="/resources/css/registro.css" />
+    <link rel="stylesheet" href="/resources/css/botones.css" />
+
+    <!-- BS Table -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <script
+        src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    <!-- JS Exports plugin -->
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Dashboard</title>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark">
+        <% if (login) {%>
+            <p class="navbar-brand mx-auto">Bienvenido/a <%= name %> a la Plataforma para <%= rol %></p>
+            <a href="/" class="btn btn-secondary"> Volver</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <%}%>
+    </nav>
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-12">
+                
+                <div class="card shadow">
+                    <div class="card-body">
+
+                        <ul class="nav nav-tabs mb-5 ">
+                            <% if (rol==='administrador') { %>                           
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="proyectos-tab" data-toggle="tab" href="#estudiante"
+                                        role="tab">Modificar, eliminar y visualizar datos de estudiantes</a>
+                                </li>
+                            <%} if(rol === 'administrador') {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="crear-tab" data-toggle="tab" href="#list-estudiante"
+                                        role="tab">Crear estudiantes nuevos </a>
+                                </li>
+                            <%} %>  
+                        </ul>
+
+                        
+                        <div class="tab-content" id="myTabContent">
+                            
+                            <!-- PROYECTOS -->
+                            <div class="tab-pane fade show active" id="estudiante" role="tabpanel" aria-labelledby="proyectos-tab">
+                                <div class="row">
+                                    <div class="col-md-6 mt-4 text-center">
+                                        <h3 class="card-title">Listado general de todos los estudiante registrados</h3>
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre Completo</th>
+                                                <th>Apellidos Completo</th>
+                                                <th>Correo electronico</th>
+                                                <th>Usuario o nickname</th>
+                                                <th>Fecha de creacion</th>
+                                                <th>Fecha de actualizaciones</th>
+                                                <th>Borrar</th>
+                                                <th>Editar</th>
+                                            </tr>
+                                            <% for (let i = 0; i < estudiante.length; i++) { %>
+                                                <tr>
+                                                    <% if (estudiante[i].rol !== "administrador") { %>
+                                                        <th><%= estudiante[i].cod_estudiante %></th>
+                                                        <th><%= estudiante[i].nombre_estudiante %></th>
+                                                        <th><%= estudiante[i].apellidos_estudiante %></th>
+                                                        <th><%= estudiante[i].email %></th>
+                                                        <th><%= estudiante[i].usuario %></th>
+                                                        <th><%= estudiante[i].date_create %></th>
+                                                        <th><%= estudiante[i].date_update %></th>
+                                                        <th><a href="/eliminar-estudiante/<%= estudiante[i].cod_estudiante %>">Borrar usuario</a></th>
+                                                        <th><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<%= estudiante[i].cod_estudiante %>" data-bs-whatever="@fat">Editar informacion de usuario</button></th>
+                                                    <% } %>
+                                                </tr>
+                            
+                                                <div class="modal fade" id="exampleModal<%= estudiante[i].cod_estudiante %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalLabel">Editar Datos</h5>
+                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                          <form method="post" action="/actualizar-estudiante/<%=estudiante[i].cod_estudiante%>">
+                                                            <div class="mb-3">
+                                                              <label for="recipient-name" class="col-form-label">Nombres</label>
+                                                              <input type="text" class="form-control" id="recipient-name" name="nombre_estudiante" value="<%= estudiante[i].nombre_estudiante %>">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                              <label for="message-text" class="col-form-label">Apellidos</label>
+                                                              <input class="form-control" id="message-text" type="text" name="apellidos_estudiante" value="<%= estudiante[i].apellidos_estudiante %>" >
+                                                            </div>
+                                                            <div class="mb-3">
+                                                              <label for="message-text" class="col-form-label">Usuario o nickname</label>
+                                                              <input class="form-control" id="message-text" type="text" name="usuario" value="<%= estudiante[i].usuario %>" >
+                                                            </div>
+                                                            <div class="mb-3">
+                                                              <label for="message-text" class="col-form-label">Correo electronico</label>
+                                                              <input class="form-control" id="message-text" type="text" name="email" value="<%= estudiante[i].email %>" >
+                                                            </div>
+                                                            <div class="mb-3">
+                                                              <label for="message-text" class="col-form-label">Contraseña</label>
+                                                              <input class="form-control" id="message-text" type="password" name="password" value="<%= estudiante[i].password %>" >
+                                                            </div>
+                                                            <div class="mb-3">
+                                                              <label for="message-text" class="col-form-label">Fecha de naciemiento</label>
+                                                              <input class="form-control" id="message-text" type="date" name="fecha_nacimiento" value="<%= estudiante[i].fecha_nacimiento %>" />
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="submit" class="btn btn-primary">
+                                                              </div>
+                                                          </form> 
+                                                        </div> 
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                            <% } %>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="list-estudiante" role="tabpanel" aria-labelledby="proyectos-tab">
+                              <% if (rol === 'administrador') { %>
+                                <div class="col-md-5 mt-4 card center">
+                                  <div class="container">
+                                    <form action="registro-estudiante" method="POST">
+                                      <div class="row">
+                                        <h2>Crear cuenta para usuarios</h2>
+                                        <h4>Informacion personal</h4>
+                                        <div class="input-group input-group-icon">
+                                            <input type="text" name="foto" placeholder="Foto" />
+                                            <div class="input-icon"><i class="fa fa-user"></i></div>
+                                          </div>
+                                        <div class="input-group input-group-icon">
+                                          <input type="text" name="nombre_estudiante" placeholder="Ingresar el nombre del estudiante" />
+                                          <div class="input-icon"><i class="fa fa-user"></i></div>
+                                        </div>
+                                        <div class="input-group input-group-icon">
+                                          <input type="text" name="apellidos_estudiante" placeholder="Ingresar los apellidos del estudiante" />
+                                          <div class="input-icon"><i class="fa fa-user"></i></div>
+                                        </div>
+                                        <div class="input-group input-group-icon">
+                                          <input type="email" name="email" placeholder="Correo electrónico del estudiante" />
+                                          <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                                        </div>
+                                        <div class="input-group input-group-icon">
+                                          <input type="text" name="usuario" placeholder="Usuario o nickname" />
+                                          <div class="input-icon"><i class="fa fa-user"></i></div>
+                                        </div>
+                            
+                                        <div class="input-group input-group-icon">
+                                          <input type="password" name="password" placeholder="Crear contraseña al estudiante" />
+                                          <div class="input-icon"><i class="fa fa-key"></i></div>
+                                        </div>
+                            
+                                        <div class="row">
+                            
+                                          <div class="col-half">
+                                            <h5>codigo (cod_estudiante) o numero de cocumento de identificacion</h5>
+                                            <div class="input-group input-group-icon">
+                                              <input type="text" name="cod_estudiante" placeholder="codigo (cod_estudiante) o numero de cocumento de identificacion" />
+                                              <div class="input-icon"><i class="fa fa-credit-card"></i></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                            
+                                        <div class="input-group input-group-icon">
+                                          <input type="text" name="celular" placeholder="Teléfono móvil" />
+                                          <div class="input-icon"><i class="fa fa-phone"></i></div>
+                                        </div>
+                            
+                                      </div>
+                            
+                                      <div class="row">
+                                        <div class="col-half">
+                                          <h4>Fecha de nacimiento</h4>
+                                          <div class="input-group input-group-icon">
+                                            <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" />
+                                            <div class="input-icon"><i class="fa fa-calendar"></i></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                            
+                                      <div class="row">
+                                        <h4>Asignar rol?</h4>
+                                        <div class="input-group">
+                                          <input type="radio" name="rol" value="estudiante" id="rol-estudiante" />
+                                          <label for="rol-estudiante">Estudiante</label>
+                                        </div>
+                                      </div>
+                            
+                                      <div class="row">
+                                        <div class="input-group">
+                                          <div class='button center'>
+                                            <a href="/" onclick="return confirmarAccesoURL()">
+                                              <input class="button -dark center" type="button" value="Cancelar" />
+                                            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input class="button -dark center" type="submit" value="Guardar" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                                <% } %> 
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#mySelect').on('change', function (e) {
+            $('#myTab li a').eq($(this).val()).tab('show');
+        });
+
+
+        var $table = $('#table');
+        $(function () {
+            $('#toolbar').find('select').change(function () {
+                $table.bootstrapTable('destroy').bootstrapTable({
+                    exportDataType: $(this).val(),
+                    exportTypes: ['excel', 'pdf', 'png'],
+                    columns: [
+                        {
+                            field: 'state',
+                            checkbox: true,
+                            visible: $(this).val() === 'selected'
+                        }, {
+                            field: '#',
+                            title: '#'
+                        }, {
+                            field: 'Nombre',
+                            title: 'Nombre'
+                        }, {
+                            field: 'Apellidos',
+                            title: 'Apellidos'
+                        }, {
+                            field: 'Correo electronico',
+                            title: 'Correo electronico'
+                        }, {
+                            field: 'Estrato',
+                            title: 'Estrato'
+                        }, {
+                            field: 'Info',
+                            title: 'Info'
+                        }
+                    ]
+                });
+            }).trigger('change');
+        });        
+    </script>
+    <script>
+        window.addEventListener('load', setup);
+  
+        async function setup() {
+          const ctx = document.getElementById('myChart').getContext('2d');
+          const globalData = await getData();
+          const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: globalData.label,
+              datasets: [
+                {
+                  label: 'Datos',
+                  data: globalData.dataset,
+                  fill: false,
+                  backgroundColor: [
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(54, 162, 235, 0.2)',
+                          'rgba(255, 206, 86, 0.2)',
+                          'rgba(75, 192, 192, 0.2)',
+                          'rgba(153, 102, 255, 0.2)',
+                          'rgba(255, 159, 64, 0.2)'
+                      ],
+                      borderColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1
+                }
+              ]
+            },
+            options: {}
+          });
+        }
+  
+        async function getData() {
+          const response = await fetch('http://localhost:3000/chart');
+          const data = await response.json();
+          const label = [];
+          const dataset = [];
+          
+          data.forEach(row => {
+            label.push(row.municipality);
+            dataset.push(parseFloat(row.nroHijos));
+          });
+          return { label, dataset };
+        }
+      </script>
+      <script src="/resources/js/selection.js"></script>
+</body>
+
+</html>

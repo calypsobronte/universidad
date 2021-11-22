@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/resources/css/dashboard.css">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <% if (login) {%>
+            <a href="dashboard" class="navbar-brand mx-auto">Bienvenido/a <%= name %> a la Plataforma para <%= rol %></a>
+            <a href="/logout" class="btn btn-secondary"> Cerrar sesion</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <%}%>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div id="wizard_container" class="wizard" novalidate="novalidate">
+                <div id="middle-wizard" class="wizard-branch wizard-wrapper">
+                    <div class="step wizard-step current" data-state="branchtype" style="display: block;">
+                        <div class="question_title">
+                            <h3 class="wizard-header">Bienvenido a la plataforma</h3>
+                        </div>
+                        <br>
+                        <!-- row-->
+                        <div class="row">
+                            <% if (rol==='administrador') {%>
+                            <div class="col-lg-4">
+                                <a href="/dashboard-facultad">
+                                <div class="item">
+                                    <label for="answer_2"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                                            <path
+                                                d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                                            <path
+                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                            <path
+                                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                            </svg><strong>Facultad</strong>Ver registros.</label>
+                                </div>
+                            </a>
+                            </div>
+                            <%}%>
+                            <% if (rol==='administrador') {%>
+                            <div class="col-lg-4">
+                                <a href="/dashboard-programa">
+                                <div class="item">
+                                    <label for="answer_2"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                                            <path
+                                                d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                                            <path
+                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                            <path
+                                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                        </svg><strong>Programa</strong>Ver registros.</label>
+                                </div>
+                            </a>
+                            </div>
+                            <%}%>
+                            <% if (rol==='administrador') {%>
+                            <div class="col-lg-4">
+                                <a href="/dashboard-estudiante">
+                                <div class="item">
+                                    <label for="answer_3"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                                            <path
+                                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                            <path fill-rule="evenodd"
+                                                d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                            </svg><strong>Estudiante</strong>Ver informacion.</label>
+                                </div>
+                                </a>
+                            </div>
+                            <%}%>
+                            <% if (rol==='estudiante') {%>
+                            <div class="col-lg-4">
+                                <a href="/estudiante/dashboard-estudiante">
+                                <div class="item">
+                                    <label for="answer_3"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                                            <path
+                                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                            <path fill-rule="evenodd"
+                                                d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                            </svg><strong>Estudiante</strong>Ver informacion.</label>
+                                </div>
+                                </a>
+                            </div>
+                            <%}%>
+                            <% if (rol==='administrador') {%>
+                            <div class="col-lg-4">
+                                <a href="/dashboard-docente">
+                                <div class="item">
+                                    <label for="answer_3"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                                            <path
+                                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                            <path fill-rule="evenodd"
+                                                d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                        </svg><strong>Docente</strong>Ver informacion.</label>
+                                </div>
+                                </a>
+                            </div>
+                            <%}%>
+                            <% if (rol==='docente') {%>
+                                <div class="col-lg-4">
+                                    <a href="/docente/dashboard-docente">
+                                    <div class="item">
+                                        <label for="answer_3"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                                fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                            </svg><strong>Docente</strong>Ver informacion.</label>
+                                    </div>
+                                    </a>
+                                </div>
+                                <%}%>
+                            <% if (rol==='administrador') {%>
+                            <div class="col-lg-4">
+                                <a href="/dashboard-asignatura">
+                                <div class="item">
+                                    <label for="answer_3"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-journal-plus" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z" />
+                                            <path
+                                                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                            <path
+                                                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                        </svg><strong>Asignatura</strong>Ver informacion.</label>
+                                </div>
+                                </a>
+                            </div>
+                            <%}%>
+                            <% if (rol==='administrador') {%>
+                            <div class="col-lg-4">
+                                <a href="/dashboard-docente-programa">
+                                <div class="item">
+                                    <label for="answer_3"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-file-richtext" viewBox="0 0 16 16">
+                                            <path
+                                                d="M7 4.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208zM5 9a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                            <path
+                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                        </svg><strong>Ver informacion del programa a dictar</strong></label>
+                                </div>
+                                </a>
+                            </div>
+                            <%}%>
+                            <% if (rol==='administrador') {%>
+                            <div class="col-lg-4">
+                                <a href="/dashboard-matricula">
+                                <div class="item">
+                                    <label for="answer_3"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                            fill="currentColor" class="bi bi-file-richtext" viewBox="0 0 16 16">
+                                            <path
+                                                d="M7 4.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208zM5 9a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                            <path
+                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                        </svg><strong>Ver informacion de la matricula</strong></label>
+                                </div>
+                                </a>
+                            </div>
+                            <%}%>
+
+
+                        </div>
+                        <!-- /row-->
+                    </div>
+                </div>
+            </div>
+    </main>
+    <br><br>
+    <!-- ******************** Footer ******************** -->
+    <footer class=" row footer-style g-0 mt-3 ">
+        <!-- ******************** Section - one - Footer ******************** -->
+        <div class="d-flex col-lg-6 col-md-6 col-sm-12 col-12  justify-content-sm-center mt-5 justify-content-xl-start">
+            <div class="d-flex flex-column me-3">
+                <p class="paragraph-footer">Universidad - 2021 todos los derechos reservados</p>
+                <p class="paragraph-footer">Creado por Lucero</p>
+            </div>
+        </div>
+        <!-- ******************** Section - Two - Footer ******************** -->
+        <div
+            class="d-flex col-lg-6 col-md-6 col-sm-12 col-12  justify-lg-content-end justify-content-center mb-4  justify-content-xl-end mb-sm-4">
+            <div class="d-flex flex-column content-social-media-footer mt-xl-5 mt-4 mt-sm-4">
+                <p class="paragraph-footer-two">
+                    Encuentranos en:
+                </p>
+                <div class="d-flex">
+                    <a class="me-4" href="#" target="_blank"><img
+                        src="/resources/image/instagram-24.png"
+                        alt="Logo de instagram"></a>
+                    <a class="me-4" href="#" target="_blank"><img
+                        src="/resources/image/facebook-24.png"
+                        alt="Logo de Facebook"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

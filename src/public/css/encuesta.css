@@ -1,0 +1,185 @@
+* {
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+  
+  form {
+    padding: 5px;
+    margin: auto;
+    width: 1101px;
+  }
+  
+  input,
+  input:focus {
+    border: 1px solid #555;
+    width: 100%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    margin-top: 2px;
+  }
+  
+  /* Quita las flechas en casillas de números */
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .entrada {
+    padding: 6px;
+  }
+  
+  #nombres {
+    -moz-column-count: 4;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 0px;
+    column-count: 4;
+    column-gap: 0px;
+  }
+  
+  #domicilio,
+  #domicilio2 {
+    -moz-column-count: 3;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 0px;
+    column-count: 3;
+    column-gap: 0px;
+  }
+
+  #element-input {
+    -moz-column-count: 3;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 0px;
+    column-count: 3;
+    column-gap: 0px;
+  }
+  
+  #correo,
+  #nombres2,
+  #grupo3caja1columna2,
+  #grupo3caja2columna1,
+  #grupo4 {
+    -moz-column-count: 2;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 0px;
+    column-count: 2;
+    column-gap: 0px;
+  }
+  
+  #propietario,
+  #unidad,
+  #grupocroquis,
+  #ultimo,
+  #grupo4 {
+    border: solid black 2px;
+    padding: 6px;
+  }
+  
+  
+  /* III. De la Prueba */
+  
+  #prueba {
+    display: -webkit-flex;
+    display: flex;
+  }
+  
+  #caja1 {
+    border: solid black 2px;
+    padding: 6px;
+    -webkit-flex: 1;
+            flex: 1;
+    height: 450px;
+  }
+  
+  #caja2 {
+    border: solid black 2px;
+    padding: 6px;
+    -webkit-flex: 1;
+            flex: 1;
+    height: 450px;
+  }
+  
+  #caja3 {
+    border: solid black 2px;
+    padding: 6px;
+    -webkit-flex: 1;
+            flex: 1;
+    height: 450px;
+  }
+
+
+/*caja de radio */
+
+input[type="radio"] + label {
+  width: 100%;
+  padding: -9.99em;
+  line-height: 2;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+
+select {
+  width: 100% !important;
+  padding: 5px !important;
+  line-height: 1 !important;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px !important;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+select{
+  display: inline-block;
+  width: 100% !important;
+  text-align: center;
+  float: center !important;
+  border-radius: 0 !important;
+  
+}
+
+input[type="radio"] + label {
+  display: inline-block;
+  width: 40%;
+  text-align: center;
+  float: center;
+  border-radius: 0;
+}
+input[type="radio"] + label:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+input[type="radio"] + label:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+input[type="radio"] + label i {
+  padding-right: 0.4em;
+}
+input[type="radio"]:checked + label,
+input:checked + label:before,
+select:focus,
+select:active {
+  background-color: #545454;
+  color: #fff;
+  border-color: #545454;
+}
